@@ -31,6 +31,8 @@ runs:
     - name: Install Az PowerShell module
       run: if('${{ inputs.skipAzModuleInstallation }}' -ne 'true') { Install-Module -Name Az -Scope CurrentUser -Repository PSGallery -Force }
       shell: pwsh
+      run: |
+         Write-Host "Running custom deploymen script..."
 
     - name: Run Pre-deployment script
       run: |
