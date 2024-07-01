@@ -249,11 +249,13 @@ else {
         Write-Host "Deleting Linked Service " $_.Name
         Remove-AzDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
-    Write-Host "Deleting integration runtimes"
-    $deletedintegrationruntimes | ForEach-Object { 
-        Write-Host "Deleting integration runtime " $_.Name
-        Remove-AzDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
-    }
+
+    Write-Host "Preserving integration runtimes... nothing removed."
+    #Write-Host "Deleting integration runtimes"
+    #$deletedintegrationruntimes | ForEach-Object { 
+    #    Write-Host "Deleting integration runtime " $_.Name
+    #    Remove-AzDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+    #}
 
     if ($deleteDeployment -eq $true) {
         Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
